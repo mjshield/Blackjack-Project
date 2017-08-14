@@ -47,6 +47,11 @@ public class Game {
         person.addCard(card);
     }
 
+    public void playerSticks(Player person, Player dealer) {
+        
+    }
+
+
 
 
 

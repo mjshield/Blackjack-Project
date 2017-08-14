@@ -13,10 +13,14 @@ import static org.junit.Assert.assertNotEquals;
 public class GameTest {
 
     Game game;
+    Player player;
+    Player dealer;
 
     @Before
     public void before() {
         game = new Game();
+        player = new Player();
+        dealer = new Player();
     }
 
     @Test
@@ -28,7 +32,8 @@ public class GameTest {
         assertNotEquals(0, game.getPlayerPoints());
         assertNotEquals(0, game.getDealerPoints());
         assertEquals(48, game.getDeckSize());
-
     }
+
+
 
 }

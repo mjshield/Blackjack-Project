@@ -43,6 +43,14 @@ public class RulesTest {
         assertEquals("push", Rules.checkForWon(player, dealer));
     }
 
+    @Test
+    public void canGoBust() {
+        player.addPoints(22);
+        dealer.addPoints(21);
+        assertEquals(true, Rules.checkForBust(player));
+        assertEquals(false, Rules.checkForBust(dealer));
+    }
+
 
 
 
