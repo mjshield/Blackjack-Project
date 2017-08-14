@@ -41,5 +41,5 @@ public class Player {
     public void stick() {
         this.stuck = true;
     }
-    
+
 }

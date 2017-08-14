@@ -22,7 +22,7 @@ public class Game {
     }
 
     public void start() {
-        if (gameActive = false) {
+        if (gameActive == false) {
             gameActive = true;
             deck.refresh();
             deal(player);
@@ -30,7 +30,7 @@ public class Game {
             deal(dealer);
             deal(dealer);
         }
-        else {return;}
+        else {}
     }
 
     public int drawNum() {
@@ -45,5 +45,29 @@ public class Game {
         deck.removeCard(index);
         person.addPoints(card.getRank());
         person.addCard(card);
+    }
+
+
+
+
+
+    public int getPlayerHandSize() {
+      return player.getHandSize();
+    }
+
+    public int getDealerHandSize() {
+       return dealer.getHandSize();
+    }
+
+    public int getDeckSize() {
+        return deck.cardCount();
+    }
+
+    public int getPlayerPoints() {
+        return player.getPoints();
+    }
+
+    public int getDealerPoints() {
+        return dealer.getPoints();
     }
 }
