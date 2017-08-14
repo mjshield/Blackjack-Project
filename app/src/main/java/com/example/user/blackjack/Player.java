@@ -34,16 +34,12 @@ public class Player {
         this.points += newPoints;
     }
 
+    public void addCard(Card card) {
+        hand.addCard(card);
+    }
+
     public void stick() {
         this.stuck = true;
     }
-
-    public void twist(int index, Deck deck) {
-       Card card = deck.getCard(index);
-        deck.removeCard(index);
-
-        addPoints(card.getRank());
-
-        hand.addCard(card);
-    }
+    
 }

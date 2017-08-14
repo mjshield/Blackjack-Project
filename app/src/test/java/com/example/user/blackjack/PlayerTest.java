@@ -39,11 +39,5 @@ public class PlayerTest {
         assertEquals(true, player.getStuck());
     }
 
-    @Test
-    public void canTwist() {
-        player.twist(4, deck);
-        assertEquals(1, player.getHandSize());
-        assertEquals(5, player.getPoints());
-    }
 
 }
