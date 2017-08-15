@@ -12,6 +12,7 @@ public class GameActivity extends AppCompatActivity {
     Button stick;
     Button twist;
     Button restart;
+    Game game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,7 @@ public class GameActivity extends AppCompatActivity {
         twist = (Button) findViewById(R.id.twist_button);
         restart = (Button) findViewById(R.id.restart_button);
 
-//        Game.start();
-   
+        game = new Game();
+        game.start();
     }
 }
