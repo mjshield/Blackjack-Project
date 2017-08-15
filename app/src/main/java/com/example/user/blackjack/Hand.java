@@ -12,7 +12,6 @@ public class Hand {
 
     public Hand() {
         this.hand = new ArrayList<Card>();
-
     }
 
     public int cardCount() {
@@ -22,4 +21,5 @@ public class Hand {
     public void addCard(Card card) {
         hand.add(card);
     }
+
 }

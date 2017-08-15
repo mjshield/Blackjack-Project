@@ -34,6 +34,14 @@ public class GameTest {
         assertEquals(48, game.getDeckSize());
     }
 
+    @Test
+    public void canStick() {
+        game.start();
+        int startingPoints = game.getDealerPoints();
+        game.playerSticks();
+        assertNotEquals(startingPoints, game.getDealerPoints());
+    }
+
 
 
 }

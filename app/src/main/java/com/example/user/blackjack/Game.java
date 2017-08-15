@@ -40,21 +40,50 @@ public class Game {
     }
 
     public void deal(Player person) {
-        int index = drawNum();
-        Card card = deck.getCard(index);
-        deck.removeCard(index);
-        person.addPoints(card.getRank());
-        person.addCard(card);
+        //conditional where if you're the player, not the dealer, and the game is not active, you can't deal
+
+        if (person == player && gameActive == false) {}
+
+        else {
+            int index = drawNum();
+            Card card = deck.getCard(index);
+
+            deck.removeCard(index);
+            if (card.getRank() == 1 && person.getPoints() <= 10) {
+                person.addPoints(11);
+            }
+            else { person.addPoints(card.getRank()); }
+            person.addCard(card);
+        }
     }
 
-    public void playerSticks(Player person, Player dealer) {
-        
+    public void playerSticks() {
+
+        if (gameActive == true) {
+            gameActive = false;
+
+            while (dealer.getPoints() <= 16 && Rules.checkForBust(dealer) == false) {
+                deal(dealer);
+            }
+        }
+        else {}
     }
 
+    public void restart() {
+        if (gameActive == false) {
+            deck.refresh();
+            player.resetPoints();
+        }
+        else {}
+    }
 
+    public Hand getPlayerHand() {
+        return player.hand;
+    }
 
-
-
+    public Hand getDealerHand() {
+        return dealer.hand;
+    }
 
     public int getPlayerHandSize() {
       return player.getHandSize();

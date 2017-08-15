@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * Created by user on 14/08/2017.
@@ -31,6 +32,11 @@ public class PlayerTest {
         player.addPoints(5);
         player.addPoints(7);
         assertEquals(12, player.getPoints());
+    }
+
+    @Test public void canResetPoints() {
+        player.addPoints(10);
+        assertNotEquals(0, player.getPoints());
     }
 
     @Test

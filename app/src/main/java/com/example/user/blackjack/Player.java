@@ -10,7 +10,7 @@ public class Player {
 
     private int points;
     private boolean stuck;
-    private Hand hand;
+    protected Hand hand;
 
     public Player() {
         this.points = 0;
@@ -32,6 +32,10 @@ public class Player {
 
     public void addPoints(int newPoints) {
         this.points += newPoints;
+    }
+
+    public void resetPoints() {
+        this.points = 0;
     }
 
     public void addCard(Card card) {
