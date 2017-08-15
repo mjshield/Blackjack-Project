@@ -26,6 +26,10 @@ public class Player {
         return hand.cardCount();
     }
 
+    public Card getCardFromhand(int index) {
+        return hand.getCardFromHand(index);
+    }
+
     public boolean getStuck() {
         return stuck;
     }

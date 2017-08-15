@@ -29,6 +29,8 @@ public class GameTest {
         game.start();
         assertEquals(2, game.getPlayerHandSize());
         assertEquals(2, game.getDealerHandSize());
+        System.out.println(game.getPlayerPoints());
+        System.out.println(game.getDealerPoints());
         assertNotEquals(0, game.getPlayerPoints());
         assertNotEquals(0, game.getDealerPoints());
         assertEquals(48, game.getDeckSize());
@@ -41,6 +43,8 @@ public class GameTest {
         game.playerSticks();
         assertNotEquals(startingPoints, game.getDealerPoints());
     }
+
+
 
 
 

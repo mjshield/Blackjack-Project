@@ -22,4 +22,9 @@ public class Hand {
         hand.add(card);
     }
 
+    public Card getCardFromHand(int index) {
+        Card card = hand.get(index);
+        return card;
+    }
+
 }

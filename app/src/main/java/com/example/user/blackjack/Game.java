@@ -81,6 +81,14 @@ public class Game {
         return player.hand;
     }
 
+    public Card getPlayerCardFromHand(int index) {
+        return player.getCardFromhand(index);
+    }
+
+    public Card getDealerCardFromHand(int index) {
+        return dealer.getCardFromhand(index);
+    }
+
     public Hand getDealerHand() {
         return dealer.hand;
     }
