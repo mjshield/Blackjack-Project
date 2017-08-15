@@ -6,21 +6,18 @@ package com.example.user.blackjack;
 
 public class Rules {
 
-    private int limit;
-
-
     public static String checkForWon(Player player, Player dealer) {
         if (player.getPoints() > dealer.getPoints()) {
-            return "player wins";
+            return "You win!";
         }
         else if (player.getPoints() < dealer.getPoints()) {
-            return "dealer wins";
+            return "Dealer wins!";
         }
         else if (player.getPoints() == dealer.getPoints()) {
-            return "push";
+            return "It's a tie!";
         }
         else {
-            return "error";
+            return "nobody";
         }
     }
 
@@ -34,5 +31,18 @@ public class Rules {
     }
 
 
-
+    public static String checkDealBlackjack(Player player, Player dealer) {
+        if (player.getPoints() == 21 && dealer.getPoints() == 21) {
+            return "You both got Blackjack!";
+        }
+        else if (player.getPoints() == 21) {
+            return "You got Blackjack!";
+        }
+        else if (dealer.getPoints() == 21) {
+            return "Dealer got Blackjack!";
+        }
+        else {
+            return "nobody";
+        }
+    }
 }

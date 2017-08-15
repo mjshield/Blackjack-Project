@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -44,8 +45,10 @@ public class GameActivity extends AppCompatActivity {
         playerScore.setText(String.valueOf(game.getPlayerPoints()));
         dealerScore.setText(String.valueOf(game.getDealerPoints()));
 
-
-
+        if (game.blackjack() != "nobody" ) {
+            game.restart();
+            Toast.makeText(this, game.blackjack(), Toast.LENGTH_LONG).show();
+        }
     }
 
     public void onTwistButtonClicked(View twist) {

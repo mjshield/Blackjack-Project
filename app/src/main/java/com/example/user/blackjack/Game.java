@@ -77,6 +77,14 @@ public class Game {
         else {}
     }
 
+    public String outcome() {
+        return Rules.checkForWon(player, dealer);
+    }
+
+    public String blackjack() {
+        return Rules.checkDealBlackjack(player, dealer);
+    }
+
     public Hand getPlayerHand() {
         return player.hand;
     }
