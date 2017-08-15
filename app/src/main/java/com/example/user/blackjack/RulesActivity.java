@@ -24,6 +24,7 @@ public class RulesActivity extends AppCompatActivity {
     public void onStartButtonClicked(View start_button) {
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
+
     }
 
 }
