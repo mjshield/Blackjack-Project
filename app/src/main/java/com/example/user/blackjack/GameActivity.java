@@ -54,7 +54,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void onTwistButtonClicked(View twist) {
 
-        if (game.getPlayerPoints() != 0) {
+        if (game.checkGameActive()) {
             game.playerTwists();
 
             Card playerCard = game.getPlayerCardFromHand(game.getPlayerHandSize() - 1);
@@ -79,5 +79,16 @@ public class GameActivity extends AppCompatActivity {
         }
 
 
+    public void onStickButtonClicked(View stick) {
+
+        if (game.checkGameActive()) {
+
+            game.playerSticks();
+
+
+
+        }
+
+    }
 
 }

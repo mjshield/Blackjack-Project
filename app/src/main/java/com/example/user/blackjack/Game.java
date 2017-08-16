@@ -94,6 +94,10 @@ public class Game {
         return Rules.checkDealBlackjack(player, dealer);
     }
 
+    public boolean checkGameActive() {
+        return gameActive;
+    }
+
     public Hand getPlayerHand() {
         return player.hand;
     }
