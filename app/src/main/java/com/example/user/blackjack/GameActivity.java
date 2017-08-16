@@ -19,6 +19,10 @@ public class GameActivity extends AppCompatActivity {
     Button restart;
     Game game;
 
+    Toast gameOverToast;
+    Toast gameOutcomeToast;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +36,10 @@ public class GameActivity extends AppCompatActivity {
         stick = (Button) findViewById(R.id.stick_button);
         twist = (Button) findViewById(R.id.twist_button);
         restart = (Button) findViewById(R.id.restart_button);
+
+        gameOverToast = Toast.makeText(this, "The game is over", Toast.LENGTH_SHORT);
+        gameOutcomeToast = Toast.makeText(this, "outcome toast", Toast.LENGTH_SHORT);
+
 
         game = new Game();
         game.start();
@@ -47,10 +55,13 @@ public class GameActivity extends AppCompatActivity {
         dealerScore.setText(String.valueOf(game.getDealerPoints()));
 
         if (!game.blackjack().equals("nobody")) {
-            Toast.makeText(this, game.blackjack(), Toast.LENGTH_LONG).show();
+            gameOverToast.cancel();
+            gameOutcomeToast = Toast.makeText(this, game.blackjack(), Toast.LENGTH_SHORT);
+            gameOutcomeToast.show();
             game.gameEnd();
 
         }
+
     }
 
     public void onTwistButtonClicked(View twist) {
@@ -64,18 +75,22 @@ public class GameActivity extends AppCompatActivity {
             playerScore.setText(String.valueOf(game.getPlayerPoints()));
 
             if (!game.blackjack().equals("nobody")) {
-                Toast.makeText(this, game.blackjack(), Toast.LENGTH_LONG).show();
+                gameOverToast.cancel();
+                gameOutcomeToast = Toast.makeText(this, game.blackjack(), Toast.LENGTH_SHORT);
+                gameOutcomeToast.show();
                 game.gameEnd();
             }
 
             if (game.playerBust()) {
-                Toast.makeText(this, "You went bust!", Toast.LENGTH_LONG).show();
+                gameOverToast.cancel();
+                gameOutcomeToast = Toast.makeText(this, "You went bust!", Toast.LENGTH_SHORT);
+                gameOutcomeToast.show();
                 game.gameEnd();
 
             }
         }
 
-        else {Toast.makeText(this, "The game is over", Toast.LENGTH_SHORT).show();}
+        else {gameOverToast.show();}
 
         }
 
@@ -96,23 +111,31 @@ public class GameActivity extends AppCompatActivity {
             dealerScore.setText(String.valueOf(game.getDealerPoints()));
 
             if (game.dealerBust()) {
-                Toast.makeText(this, "Dealer went bust!", Toast.LENGTH_LONG).show();
+                gameOverToast.cancel();
+                gameOutcomeToast = Toast.makeText(this, "Dealer went bust!", Toast.LENGTH_SHORT);
+                gameOutcomeToast.show();
                 game.gameEnd();
             }
             else {
-                Toast.makeText(this, game.outcome(), Toast.LENGTH_LONG).show();
+                gameOverToast.cancel();
+                gameOutcomeToast = Toast.makeText(this, game.outcome(), Toast.LENGTH_SHORT);
+                gameOutcomeToast.show();
                 game.gameEnd();
             }
 
         }
 
-        else {Toast.makeText(this, "The game is over", Toast.LENGTH_SHORT).show();}
+        else {gameOverToast.show();}
 
     }
 
     public void onRestartButtonClicked(View stick) {
 
         if (!game.checkGameActive()) {
+            gameOverToast.cancel();
+            gameOutcomeToast.cancel();
+
+
             game.start();
             Card dealerCard1 = game.getDealerCardFromHand(0);
             Card playerCard1 = game.getPlayerCardFromHand(0);
@@ -126,7 +149,7 @@ public class GameActivity extends AppCompatActivity {
             dealerScore.setText(String.valueOf(game.getDealerPoints()));
 
             if (!game.blackjack().equals("nobody")) {
-                Toast.makeText(this, game.blackjack(), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, game.blackjack(), Toast.LENGTH_SHORT).show();
                 game.gameEnd();
 
             }
