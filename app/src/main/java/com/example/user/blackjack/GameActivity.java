@@ -48,11 +48,12 @@ public class GameActivity extends AppCompatActivity {
         Card playerCard2 = game.getPlayerCardFromHand(1);
 
         dealerLog.setText(dealerCard1.getName() + " of " + dealerCard1.getSuit() + "\n");
+        dealerLog.append("???");
         playerLog.setText(playerCard1.getName() + " of " + playerCard1.getSuit() + "\n");
         playerLog.append(playerCard2.getName() + " of " + playerCard2.getSuit() + "\n");
 
         playerScore.setText(String.valueOf(game.getPlayerPoints()));
-        dealerScore.setText(String.valueOf(game.getDealerPoints()));
+        dealerScore.setText("?");
 
         if (!game.blackjack().equals("nobody")) {
             gameOverToast.cancel();
@@ -102,6 +103,8 @@ public class GameActivity extends AppCompatActivity {
 
             Hand hand = game.getDealerHand();
 
+            dealerLog.setText(" ");
+
             for (int counter = 0; counter < hand.getHandSize(); counter++) {
                 Log.d(getClass().toString(), "This is loop '" + counter + "'" );
                 Card card = hand.getCardFromHand(counter);
@@ -142,11 +145,12 @@ public class GameActivity extends AppCompatActivity {
             Card playerCard2 = game.getPlayerCardFromHand(1);
 
             dealerLog.setText(dealerCard1.getName() + " of " + dealerCard1.getSuit() + "\n");
+            dealerLog.append("???");
             playerLog.setText(playerCard1.getName() + " of " + playerCard1.getSuit() + "\n");
             playerLog.append(playerCard2.getName() + " of " + playerCard2.getSuit() + "\n");
 
             playerScore.setText(String.valueOf(game.getPlayerPoints()));
-            dealerScore.setText(String.valueOf(game.getDealerPoints()));
+            dealerScore.setText("?");
 
             if (!game.blackjack().equals("nobody")) {
                 Toast.makeText(this, game.blackjack(), Toast.LENGTH_SHORT).show();

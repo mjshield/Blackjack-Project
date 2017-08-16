@@ -40,7 +40,6 @@ public class Game {
     }
 
     public void deal(Player person) {
-        //conditional where if you're the player, not the dealer, and the game is not active, you can't deal
 
         if (person == player && gameActive == false) return;
 
@@ -100,10 +99,6 @@ public class Game {
 
     public boolean checkGameActive() {
         return gameActive;
-    }
-
-    public Hand getPlayerHand() {
-        return player.hand;
     }
 
     public Card getPlayerCardFromHand(int index) {
