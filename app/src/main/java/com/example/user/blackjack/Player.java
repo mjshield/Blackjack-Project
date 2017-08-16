@@ -42,6 +42,10 @@ public class Player {
         this.points = 0;
     }
 
+    public void clearHand() {
+        this.hand = new Hand();
+    }
+
     public void addCard(Card card) {
         hand.addCard(card);
     }

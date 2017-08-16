@@ -45,14 +45,38 @@ public class GameActivity extends AppCompatActivity {
         playerScore.setText(String.valueOf(game.getPlayerPoints()));
         dealerScore.setText(String.valueOf(game.getDealerPoints()));
 
-        if (game.blackjack() != "nobody" ) {
-            game.restart();
+        if (!game.blackjack().equals("nobody")) {
             Toast.makeText(this, game.blackjack(), Toast.LENGTH_LONG).show();
+            game.gameEnd();
+
         }
     }
 
     public void onTwistButtonClicked(View twist) {
-    }
+
+        if (game.getPlayerPoints() != 0) {
+            game.playerTwists();
+
+            Card playerCard = game.getPlayerCardFromHand(game.getPlayerHandSize() - 1);
+            playerLog.append(playerCard.getName() + " of " + playerCard.getSuit() + "\n");
+
+            playerScore.setText(String.valueOf(game.getPlayerPoints()));
+
+            if (!game.blackjack().equals("nobody")) {
+                Toast.makeText(this, game.blackjack(), Toast.LENGTH_LONG).show();
+                game.gameEnd();
+            }
+
+            if (game.playerBust()) {
+                Toast.makeText(this, "You went bust!", Toast.LENGTH_LONG).show();
+                game.gameEnd();
+
+            }
+        }
+
+        else {Toast.makeText(this, "The game is over", Toast.LENGTH_SHORT).show();}
+
+        }
 
 
 

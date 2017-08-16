@@ -45,10 +45,11 @@
         android:id="@+id/twist_button"
         android:layout_width="161dp"
         android:layout_height="47dp"
-        android:text="Twist"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="69dp"
         android:layout_marginRight="16dp"
+        android:onClick="onTwistButtonClicked"
+        android:text="Twist"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
     <Button

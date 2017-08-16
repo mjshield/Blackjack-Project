@@ -42,7 +42,7 @@ public class Game {
     public void deal(Player person) {
         //conditional where if you're the player, not the dealer, and the game is not active, you can't deal
 
-        if (person == player && gameActive == false) {}
+        if (person == player && gameActive == false) return;
 
         else {
             int index = drawNum();
@@ -69,12 +69,21 @@ public class Game {
         else {}
     }
 
-    public void restart() {
-        if (gameActive == false) {
-            deck.refresh();
-            player.resetPoints();
-        }
-        else {}
+    public void playerTwists() {
+        deal(player);
+    }
+
+    public boolean playerBust() {
+        return Rules.checkForBust(player);
+    }
+
+    public void gameEnd() {
+        gameActive = false;
+        deck.refresh();
+        player.resetPoints();
+        dealer.resetPoints();
+        player.clearHand();
+        dealer.clearHand();
     }
 
     public String outcome() {
