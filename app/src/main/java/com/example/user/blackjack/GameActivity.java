@@ -2,6 +2,7 @@ package com.example.user.blackjack;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -38,7 +39,7 @@ public class GameActivity extends AppCompatActivity {
         Card playerCard1 = game.getPlayerCardFromHand(0);
         Card playerCard2 = game.getPlayerCardFromHand(1);
 
-        dealerLog.setText(dealerCard1.getName() + " of " + dealerCard1.getSuit());
+        dealerLog.setText(dealerCard1.getName() + " of " + dealerCard1.getSuit() + "\n");
         playerLog.setText(playerCard1.getName() + " of " + playerCard1.getSuit() + "\n");
         playerLog.append(playerCard2.getName() + " of " + playerCard2.getSuit() + "\n");
 
@@ -82,11 +83,53 @@ public class GameActivity extends AppCompatActivity {
     public void onStickButtonClicked(View stick) {
 
         if (game.checkGameActive()) {
-
             game.playerSticks();
 
+            Hand hand = game.getDealerHand();
 
+            for (int counter = 0; counter < hand.getHandSize(); counter++) {
+                Log.d(getClass().toString(), "This is loop '" + counter + "'" );
+                Card card = hand.getCardFromHand(counter);
+                dealerLog.append(card.getName() + " of " + card.getSuit() + "\n");
+            }
 
+            dealerScore.setText(String.valueOf(game.getDealerPoints()));
+
+            if (game.dealerBust()) {
+                Toast.makeText(this, "Dealer went bust!", Toast.LENGTH_LONG).show();
+                game.gameEnd();
+            }
+            else {
+                Toast.makeText(this, game.outcome(), Toast.LENGTH_LONG).show();
+                game.gameEnd();
+            }
+
+        }
+
+        else {Toast.makeText(this, "The game is over", Toast.LENGTH_SHORT).show();}
+
+    }
+
+    public void onRestartButtonClicked(View stick) {
+
+        if (!game.checkGameActive()) {
+            game.start();
+            Card dealerCard1 = game.getDealerCardFromHand(0);
+            Card playerCard1 = game.getPlayerCardFromHand(0);
+            Card playerCard2 = game.getPlayerCardFromHand(1);
+
+            dealerLog.setText(dealerCard1.getName() + " of " + dealerCard1.getSuit() + "\n");
+            playerLog.setText(playerCard1.getName() + " of " + playerCard1.getSuit() + "\n");
+            playerLog.append(playerCard2.getName() + " of " + playerCard2.getSuit() + "\n");
+
+            playerScore.setText(String.valueOf(game.getPlayerPoints()));
+            dealerScore.setText(String.valueOf(game.getDealerPoints()));
+
+            if (!game.blackjack().equals("nobody")) {
+                Toast.makeText(this, game.blackjack(), Toast.LENGTH_LONG).show();
+                game.gameEnd();
+
+            }
         }
 
     }

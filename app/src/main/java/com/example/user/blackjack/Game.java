@@ -77,6 +77,10 @@ public class Game {
         return Rules.checkForBust(player);
     }
 
+    public boolean dealerBust() {
+        return Rules.checkForBust(dealer);
+    }
+
     public void gameEnd() {
         gameActive = false;
         deck.refresh();

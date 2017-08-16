@@ -27,4 +27,8 @@ public class Hand {
         return card;
     }
 
+    public int getHandSize() {
+        return this.hand.size();
+    }
+
 }
